@@ -8,9 +8,12 @@ data class Board(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
 
+    @Column
+    val content: String,
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     val writer: User?
 ) {
-    constructor(writer: User) : this(null, writer)
+    constructor(content: String, writer: User) : this(null, content, writer)
 }
