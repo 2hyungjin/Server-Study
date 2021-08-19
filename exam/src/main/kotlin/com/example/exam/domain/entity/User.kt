@@ -1,5 +1,6 @@
 package com.example.exam.domain.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import lombok.Getter
 import javax.persistence.*
 
@@ -12,6 +13,7 @@ data class User(
     @Column
     var name: String = "",
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     var boards: List<Board>
 ) {
