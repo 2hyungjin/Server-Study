@@ -13,7 +13,7 @@ data class User(
     @Column
     var name: String = "",
 
-    @JsonIgnore
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     var boards: List<Board>
 ) {

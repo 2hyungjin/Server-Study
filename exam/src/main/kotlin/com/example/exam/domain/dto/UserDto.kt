@@ -4,5 +4,5 @@ import lombok.Getter
 
 data class UserDto(
     val id: Long,
-    val name: String
+    val name: String,
 )

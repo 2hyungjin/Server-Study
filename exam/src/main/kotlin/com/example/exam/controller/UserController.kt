@@ -2,8 +2,10 @@ package com.example.exam.controller
 
 import com.example.exam.domain.dto.PostUserDto
 import com.example.exam.domain.dto.UserDto
+import com.example.exam.domain.response.Response
 import com.example.exam.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -13,12 +15,13 @@ class UserController {
     lateinit var userService: UserService
 
     @GetMapping
-    fun getUsers(): List<UserDto> {
-        return userService.getUsers()
+    fun getUsers(): Response {
+        return Response(HttpStatus.OK, "", userService.getUsers())
     }
 
     @PostMapping
-    fun postUser(@RequestBody user: PostUserDto){
+    fun postUser(@RequestBody user: PostUserDto): Response {
         userService.postUsers(user)
+        return Response(HttpStatus.OK, "")
     }
 }
