@@ -23,11 +23,11 @@ class UserServiceImpl : UserService {
             users.forEach { user ->
                 userList.add(UserDto(user.id!!, user.name))
             }
-            if (userList.isEmpty()) {
-                throw NotFoundException("No User exists.")
-            }
         } catch (e: Exception) {
             throw HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+        if (userList.isEmpty()) {
+            throw NotFoundException("No User exists.")
         }
         return userList
 
