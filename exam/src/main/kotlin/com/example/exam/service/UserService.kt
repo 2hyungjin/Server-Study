@@ -5,6 +5,7 @@ import com.example.exam.domain.dto.UserDto
 import com.example.exam.domain.entity.User
 
 interface UserService {
-    fun getUsers():List<UserDto>
+    fun getUsers(): List<UserDto>
     fun postUsers(user: PostUserDto)
+    fun getUser(id:Long): UserDto
 }

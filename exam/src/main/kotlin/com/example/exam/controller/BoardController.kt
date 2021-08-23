@@ -3,6 +3,7 @@ package com.example.exam.controller
 import com.example.exam.domain.dto.BoardDto
 import com.example.exam.domain.dto.PostBoardDto
 import com.example.exam.domain.response.Response
+import com.example.exam.domain.response.ResponseWithData
 import com.example.exam.service.BoardService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -17,7 +18,7 @@ class BoardController {
 
     @GetMapping
     fun getBoards(): Response {
-        return Response(HttpStatus.OK,"",boardService.getBoards())
+        return ResponseWithData(HttpStatus.OK,"",boardService.getBoards())
     }
 
     @PostMapping
@@ -28,7 +29,7 @@ class BoardController {
 
     @GetMapping("{id}")
     fun getBoardById(@PathVariable id: Long): Response {
-        return Response(HttpStatus.OK,"",boardService.getBoardById(id))
+        return ResponseWithData(HttpStatus.OK,"",boardService.getBoardById(id))
     }
 
 

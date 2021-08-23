@@ -16,6 +16,7 @@ data class User(
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id")
     var boards: List<Board>
+
 ) {
     constructor(name: String) : this(null, name, emptyList())
 }

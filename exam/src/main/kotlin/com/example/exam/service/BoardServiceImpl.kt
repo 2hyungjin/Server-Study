@@ -6,7 +6,9 @@ import com.example.exam.domain.dto.UserDto
 import com.example.exam.domain.entity.Board
 import com.example.exam.domain.repository.BoardRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.client.HttpServerErrorException
 import java.util.*
 
 @Service
@@ -17,6 +19,7 @@ class BoardServiceImpl : BoardService {
     override fun getBoards(): List<BoardDto> {
         val boards = boardRepository.findAll()
         val boardList = arrayListOf<BoardDto>()
+        throw HttpServerErrorException(HttpStatus.OK, "asedsd")
         for (i in boards) boardList.add(BoardDto(i.id!!, i.content, UserDto(i.writer?.id!!,i.writer.name)))
         return boardList
     }
